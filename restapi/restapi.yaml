@@ -1,0 +1,135 @@
+openapi: 3.0.1
+info:
+  title: Korean Air - PoC HTTP API
+  description: The Korean Air Microservice HTTP API
+  version: v1
+servers:
+  - url: /koreanair-poc-api
+paths:
+  /api/v1/tenants:
+    get:
+      tags:
+        - tenants
+      operationId: "getTenantList"            
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TenantsDto'
+                nullable: true        
+    post:
+      tags:
+        - tenants
+      operationId: "postTenant"
+      description: Create new Tenant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantsDto'      
+      responses:
+        '201':
+          description: OK    
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantsDto'  
+  /api/v1/tenant/{id}:
+    get:
+      tags:
+        - tenants
+      operationId: "getTenant"
+      description: Get a tenant with the specified id
+      parameters: 
+        - name: id
+          in: path
+          description: Tenant ID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK  
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantsDto'                  
+  /api/v1/tenantu/{id}:
+    put:
+      tags:
+        - tenants
+      operationId: "putTenant"
+      description: Update a tenant with the specified id
+      parameters: 
+        - name: id
+          in: path
+          description: Tenant ID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantsDto'            
+      responses:
+        '200':
+          description: OK  
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantsDto'   
+  /api/v1/tenantd/{id}:
+    delete:
+      tags:
+        - tenants
+      operationId: "deleteTenant"
+      description: Update a tenant with the specified id
+      parameters: 
+        - name: id
+          in: path
+          description: Tenant ID
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK  
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantsDto'      
+      
+components:
+  schemas:
+    TenantsDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        name:
+          type: string
+          example: 'test 2022'
+        description:
+          type: string
+          example: 'for test'
+          nullable: false
+        registerdate:
+          description: Tenant register date/time
+          type: string
+          format: date-time
+          example: '2022-07-28T05:01:43+09:00'
+        updateddate:
+          description: Tenant update date/time
+          type: string
+          format: date-time
+          example: '2022-07-28T05:01:43+09:00'   
