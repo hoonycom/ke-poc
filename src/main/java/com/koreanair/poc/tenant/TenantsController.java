@@ -23,7 +23,6 @@ public class TenantsController implements TenantsApi{
 	public TenantsController(TenantsService tenantsService) {
 		this.tenantsService = tenantsService;
 	}
-	
 	@Override
 	public ResponseEntity<List<TenantsDto>> getTenantList() {
 		List<TenantsDto> list = new ArrayList<>();
