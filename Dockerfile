@@ -1,6 +1,6 @@
 # Dockerfile
 FROM openjdk:17-jdk-slim
-ARG JAR_FILE=build/libs/ke-poc-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=/home/runner/work/ke-poc/ke-poc/ke-poc-0.0.1-SNAPSHOT.jar
 RUN ls -al
 RUN pwd
 COPY ${JAR_FILE} app.jar
