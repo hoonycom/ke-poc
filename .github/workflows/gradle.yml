@@ -51,7 +51,7 @@ jobs:
       run: |
           ls -al 
           ls -al build/libs/
-          cp -r build/libs/*-SNAPSHOP.jar ./app.jar
+          cp -r build/libs/ke-poc-0.0.1-SNAPSHOT.jar ./app.jar
     - name: Image-Checkout
       uses: actions/checkout@v2
       
