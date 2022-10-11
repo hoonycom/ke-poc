@@ -18,11 +18,12 @@ permissions:
 
 jobs:
   build:
-    name: Deploy Dev
+    name: Build
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
-    - name: Checkout
+    - name: Git-Checkout
       uses: actions/checkout@v2
 
     - name: Set up JDK 17
@@ -43,6 +44,9 @@ jobs:
     #    name: Package
     #    path: build/libs        
         
+    - name: Image-Checkout
+      uses: actions/checkout@v2
+      
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
