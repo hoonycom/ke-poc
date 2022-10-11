@@ -42,12 +42,14 @@ jobs:
       run: ./gradlew clean build -x test
       shell: bash
     
-    - name: Packaging with Gradle        
-      uses: actions/upload-artifact@v3
-      with:
-        name: Package
-        path: build/libs        
-        
+#     - name: Packaging with Gradle        
+#       uses: actions/upload-artifact@v3
+#       with:
+#         name: Package
+#         path: build/libs        
+    - name: Generate deployment package
+      run: |
+          cp -r build/libs/*.jar ./app.jar
     - name: Image-Checkout
       uses: actions/checkout@v2
       
