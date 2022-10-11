@@ -40,7 +40,12 @@ jobs:
         name: Package
         path: build/libs        
 
+  deploy:
+  
+    runs-on: ubuntu-latest
+    environment: production
 
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -60,7 +65,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
-      run: |
+      run:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
