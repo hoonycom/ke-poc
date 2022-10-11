@@ -49,7 +49,7 @@ jobs:
 #         path: build/libs        
     - name: Generate deployment package
       run: |
-          ls -al 
+          pwd
           ls -al build/libs/
           cp -r build/libs/ke-poc-0.0.1-SNAPSHOT.jar ./app.jar
     - name: Image-Checkout
