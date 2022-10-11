@@ -49,7 +49,7 @@ jobs:
 #         path: build/libs        
     - name: Generate deployment package
       run: |
-          cp -r build/libs/*.jar ./app.jar
+          cp -r build/libs/*-SNAPSHOP.jar ./app.jar
     - name: Image-Checkout
       uses: actions/checkout@v2
       
