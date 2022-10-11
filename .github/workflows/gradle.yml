@@ -49,6 +49,8 @@ jobs:
 #         path: build/libs        
     - name: Generate deployment package
       run: |
+          ls -al 
+          ls -al build/libs/
           cp -r build/libs/*-SNAPSHOP.jar ./app.jar
     - name: Image-Checkout
       uses: actions/checkout@v2
