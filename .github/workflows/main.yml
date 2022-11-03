@@ -28,8 +28,8 @@ jobs:
           java-version: 17
           cache: gradle       
           
-#       - name: Run chmod to make gradlew executable
-#         run: chmod +x ./gradlew         
+      - name: Run chmod to make gradlew executable
+        run: chmod +x ./gradlew         
       - name: build gradle
         run: ./gradlew clean assemble
         
@@ -44,7 +44,6 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-
       - name: Build, tag, and push image to Amazon ECR
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -55,3 +54,5 @@ jobs:
           cp build/libs/*.jar ${CONTAINER_IMAGE_TEMP_PATH}
           docker build -f ./Dockerfile -t ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG} ${CONTAINER_IMAGE_TEMP_PATH}
           docker push ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
+
+        
