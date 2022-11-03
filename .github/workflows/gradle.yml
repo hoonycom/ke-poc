@@ -29,7 +29,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
-        
+
+    - name: Build executable
+      run: chmod +x ./gradlew
+      
     - name: Build executable jar file
       run: ./gradlew clean assemble
     - name: Configure AWS Credentials
