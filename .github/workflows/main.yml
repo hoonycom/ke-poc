@@ -14,13 +14,19 @@ jobs:
       ECR_REPOSITORY_NAME: hoony
 
     steps:
-      - name: Checkout
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#         with:
+#           distribution: 'corretto'
+#           java-version: '17'
+#           cache: gradle
+  
+      - name: Set up JDK 17
         uses: actions/checkout@v3
         with:
-          distribution: 'corretto'
-          java-version: '17'
-          cache: gradle
-      
+          java-version: 17
+          cache: gradle       
+          
       - name: Run chmod to make gradlew executable
         run: chmod +x ./gradlew         
       - name: build gradle
